@@ -13,4 +13,8 @@ public class BienvenidaService {
     public String darBienvenida() {
         return saludoService.saludar() + " bienvenidos.";
     }
+
+    public int incrementarContador() {
+        return saludoService.incrementarYObtenerVContador();
+    }
 }
