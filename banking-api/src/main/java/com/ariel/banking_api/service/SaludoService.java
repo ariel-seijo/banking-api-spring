@@ -12,4 +12,8 @@ public class SaludoService {
     public String saludar() {
         return "Hola, papus!";
     }
+
+    public String saludar(String nombre) {
+        return "¡Hola, " + nombre + "!";
+    }
 }
