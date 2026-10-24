@@ -8,8 +8,7 @@ import org.springframework.boot.webmvc.test.autoconfigure.AutoConfigureMockMvc;
 import org.springframework.test.web.servlet.MockMvc;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -22,7 +21,7 @@ public class SaludoControllerTest {
     void deberiaDevolverSaludo() throws Exception {
         mockMvc.perform(get("/api/saludo"))
                 .andExpect(status().isOk())
-                .andExpect(content().string("Hola, papus!"));
+                .andExpect(jsonPath("$.mensaje").value("Hola, papus!"));
     }
 
 }

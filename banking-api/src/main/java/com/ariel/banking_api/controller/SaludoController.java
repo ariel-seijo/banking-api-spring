@@ -1,5 +1,6 @@
 package com.ariel.banking_api.controller;
 
+import com.ariel.banking_api.dto.SaludoResponse;
 import com.ariel.banking_api.service.SaludoService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -14,7 +15,7 @@ public class SaludoController {
     }
 
     @GetMapping("/api/saludo")
-    public String saludar(){
-        return saludoService.saludar();
+    public SaludoResponse saludar(){
+        return new SaludoResponse(saludoService.saludar());
     }
 }
