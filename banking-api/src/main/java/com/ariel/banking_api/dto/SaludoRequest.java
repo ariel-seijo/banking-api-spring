@@ -1,7 +1,10 @@
 package com.ariel.banking_api.dto;
 
+import jakarta.validation.constraints.NotBlank;
+
 public class SaludoRequest {
 
+    @NotBlank
     private String nombre;
 
     public SaludoRequest() {

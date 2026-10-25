@@ -35,4 +35,20 @@ public class SaludoControllerTest {
                 .andExpect(jsonPath("$.mensaje").value("¡Hola, Ariel!"));
     }
 
+    @Test
+    void deberiaRechazarNombreVacio() throws Exception {
+        mockMvc.perform(post("/api/saludo")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content("[\"nombre\":\"\"]"))
+                .andExpect(status().isBadRequest());
+    }
+
+    @Test
+    void deberiaRechazarNombreConEspacios() throws Exception {
+        mockMvc.perform(post("/api/saludo")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content("{\"nombre\":\"     \"}"))
+                .andExpect(status().isBadRequest());
+    }
+
 }

@@ -3,6 +3,7 @@ package com.ariel.banking_api.controller;
 import com.ariel.banking_api.dto.SaludoRequest;
 import com.ariel.banking_api.dto.SaludoResponse;
 import com.ariel.banking_api.service.SaludoService;
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -23,7 +24,7 @@ public class SaludoController {
     }
 
     @PostMapping("/api/saludo")
-    public SaludoResponse saludarPersonalizado(@RequestBody SaludoRequest request) {
+    public SaludoResponse saludarPersonalizado(@Valid @RequestBody SaludoRequest request) {
         String mensaje = saludoService.saludar(request.getNombre());
         return new SaludoResponse(mensaje);
     }
