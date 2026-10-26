@@ -39,10 +39,10 @@ public class SaludoControllerTest {
     void deberiaRechazarNombreVacio() throws Exception {
         mockMvc.perform(post("/api/saludo")
                 .contentType(MediaType.APPLICATION_JSON)
-                .content("[\"nombre\":\"\"]"))
+                .content("{\"nombre\":\"\"}"))
                 .andExpect(status().isBadRequest())
                 .andExpect(jsonPath("$.mensaje")
-                        .value("El nombre no puede estar vacío."));;
+                        .value("El nombre no puede estar vacío."));
 
     }
 
@@ -53,7 +53,7 @@ public class SaludoControllerTest {
                 .content("{\"nombre\":\"     \"}"))
                 .andExpect(status().isBadRequest())
                 .andExpect(jsonPath("$.mensaje")
-                        .value("El nombre no puede estar vacío."));;
+                        .value("El nombre no puede estar vacío."));
     }
 
 }

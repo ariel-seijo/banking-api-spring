@@ -14,7 +14,10 @@ public class GlobalExceptionHandler {
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public ApiErrorResponse manejarErrorDeValidacion(
             MethodArgumentNotValidException exception) {
-        return new ApiErrorResponse("El nombre no puede estar vacío.");
+        String mensaje = exception.getBindingResult()
+                .getFieldError()
+                .getDefaultMessage();
+        return new ApiErrorResponse(mensaje);
     }
 }
 

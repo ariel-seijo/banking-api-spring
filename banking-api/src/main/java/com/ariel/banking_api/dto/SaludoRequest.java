@@ -4,7 +4,7 @@ import jakarta.validation.constraints.NotBlank;
 
 public class SaludoRequest {
 
-    @NotBlank
+    @NotBlank(message = "El nombre no puede estar vacío.")
     private String nombre;
 
     public SaludoRequest() {
