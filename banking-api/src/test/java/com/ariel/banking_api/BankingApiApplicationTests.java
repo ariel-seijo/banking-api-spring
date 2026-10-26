@@ -44,9 +44,9 @@ class BankingApiApplicationTests {
 		int segundoResultado = bienvenidaService.incrementarContador();
 		assertEquals(1, primerResultado);
 		assertEquals(2, segundoResultado);
-	};
+	}
 
-	@Autowired
+    @Autowired
 	private DespedidaService despedidaService;
 
 	@Test

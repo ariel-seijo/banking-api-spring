@@ -40,7 +40,10 @@ public class SaludoControllerTest {
         mockMvc.perform(post("/api/saludo")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content("[\"nombre\":\"\"]"))
-                .andExpect(status().isBadRequest());
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.mensaje")
+                        .value("El nombre no puede estar vacío."));;
+
     }
 
     @Test
@@ -48,7 +51,9 @@ public class SaludoControllerTest {
         mockMvc.perform(post("/api/saludo")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content("{\"nombre\":\"     \"}"))
-                .andExpect(status().isBadRequest());
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.mensaje")
+                        .value("El nombre no puede estar vacío."));;
     }
 
 }
